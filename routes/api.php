@@ -35,9 +35,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 });
+ 
 
-
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/drug-categories', [App\Http\Controllers\DrugCategoryController::class, 'index'])->name('drug-categories.index');
     Route::get('/drug-categories/create', [App\Http\Controllers\DrugCategoryController::class, 'create'])->name('drug-categories.create');
     Route::post('/drug-categories', [App\Http\Controllers\DrugCategoryController::class, 'store'])->name('drug-categories.store');

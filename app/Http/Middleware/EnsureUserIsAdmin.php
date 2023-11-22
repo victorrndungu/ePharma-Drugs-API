@@ -18,7 +18,7 @@ class EnsureUserIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth('sanctum')->check() && auth('sanctum')->user()->email === 'admin@gmail.com') {
+        if (auth('sanctum')->check() && auth('sanctum')->user()->role === 'admin') {
             return $next($request);
         }
 
