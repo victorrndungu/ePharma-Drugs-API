@@ -41,10 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/purchases/create', [App\Http\Controllers\PurchasesController::class, 'create'])->name('purchases.create');
     Route::post('/purchases', [App\Http\Controllers\PurchasesController::class, 'store'])->name('purchases.store');
     Route::get('/purchases/{user_id}', [App\Http\Controllers\PurchasesController::class, 'show'])->name('purchases.show');
-});
- 
 
-Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/drug-categories', [App\Http\Controllers\DrugCategoryController::class, 'index'])->name('drug-categories.index');
     Route::get('/drug-categories/create', [App\Http\Controllers\DrugCategoryController::class, 'create'])->name('drug-categories.create');
     Route::post('/drug-categories', [App\Http\Controllers\DrugCategoryController::class, 'store'])->name('drug-categories.store');
@@ -53,3 +50,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'update'])->name('drug-categories.update');
     Route:: delete('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'destroy'])->name('drug-categories.destroy');
 });
+

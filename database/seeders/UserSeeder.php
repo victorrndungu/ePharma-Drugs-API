@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -12,14 +13,37 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = \Faker\Factory::create();
-
-        for($i = 0; $i < 10; $i++) {
-            $user = new \App\Models\User();
-            $user->name = $faker->name;
-            $user->email = $faker->email;
-            $user->password = \Illuminate\Support\Facades\Hash::make('password');
-            $user->save();
-        }
+        DB::table('users')->insert([
+            [
+                'name' => 'John Doe', 
+                'email' => 'doe@gmail.com',
+                'password' => bcrypt('password'),
+            ],
+            [
+                'name' => 'Jane Doe', 
+                'email' => 'jane@gmail.com',
+                'password' => bcrypt('password'),
+            ],
+            [
+                'name' => 'John Smith', 
+                'email' => 'smith@gmail.com',
+                'password' => bcrypt('password'),
+            ],
+            [
+                'name' => 'Jane Smith', 
+                'email' => 'janesmith@gmail.com',
+                'password' => bcrypt('password'),
+            ],
+            [
+                'name' => 'lance', 
+                'email' => 'lance@gmail.com',
+                'password' => bcrypt('@.happy!0310'),
+            ],
+            [
+                'name' => 'admin', 
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('@.happy!0310'),
+            ],
+        ]);
     }
 }

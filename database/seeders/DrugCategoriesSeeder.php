@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; 
 
 class DrugCategoriesSeeder extends Seeder
 {
@@ -62,7 +62,7 @@ class DrugCategoriesSeeder extends Seeder
         ['name' => 'Muscle Relaxant'],
         ['name' => 'Stimulant'],
         ['name' => 'Vasodilator'],
-        ['name' => 'Vasoconstrictor'],
+        ['name' => 'Vasoconstrictor'],    
         // Add more categories as needed
     ]);
 }
