@@ -44,4 +44,21 @@ class UserController extends Controller
         $user->delete();
         return response()->json(null, 204);
     }
+    //list of all users by gender
+    public function gender(){
+        $male = User::where('gender', 'male')->count();
+        $female = User::where('gender', 'female')->count();
+    
+        return response()->json([
+            'male' => $male,
+            'female' => $female,
+        ]);
+    }
+
+    // list of all users by last login time
+    public function time(){
+        $users = User::orderBy('last_login_at', 'desc')->get();
+    
+        return response()->json($users);
+    }
 }

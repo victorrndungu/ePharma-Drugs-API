@@ -45,4 +45,10 @@ class DrugController extends Controller
         $drug->delete();
         return response()->json(null, 204);
     }
+    
+    // List of all drugs by category from the db
+    public function drugCategory(){
+        $drugs = Drug::orderBy('drug_category', 'asc')->get();
+        return response()->json($drugs);
+    }
 }

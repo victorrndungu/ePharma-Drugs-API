@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/drugs/{drug}/edit', [App\Http\Controllers\DrugController::class, 'edit'])->name('drugs.edit');
     Route::patch('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'update'])->name('drugs.update');
     Route::delete('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'destroy'])->name('drugs.destroy');
+    Route::get('/drugs/drug-category', [App\Http\Controllers\DrugController::class, 'drugCategory'])->name('drugs.drug-category');
 
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
@@ -34,6 +35,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
     Route::patch('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/gender', [App\Http\Controllers\UserController::class, 'gender'])->name('users.gender');
+    Route::get('/users/time', [App\Http\Controllers\UserController::class, 'time'])->name('users.time');
+    Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'index'])->name('purchases.index');
+    Route::get('/purchases/create', [App\Http\Controllers\PurchasesController::class, 'create'])->name('purchases.create');
+    Route::post('/purchases', [App\Http\Controllers\PurchasesController::class, 'store'])->name('purchases.store');
+    Route::get('/purchases/{user_id}', [App\Http\Controllers\PurchasesController::class, 'show'])->name('purchases.show');
 });
  
 
