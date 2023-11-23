@@ -44,5 +44,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'show'])->name('drug-categories.show');
     Route::get('/drug-categories/{drugCategory}/edit', [App\Http\Controllers\DrugCategoryController::class, 'edit'])->name('drug-categories.edit');
     Route::patch('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'update'])->name('drug-categories.update');
-    Route::delete('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'destroy'])->name('drug-categories.destroy');
+    Route:: delete('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'destroy'])->name('drug-categories.destroy');
 });

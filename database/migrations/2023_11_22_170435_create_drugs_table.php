@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->unsignedBigInteger('category_id'); // Assuming 'drug_categories' table has an 'id' column
             $table->timestamps();
+
+            //categories as foreign key
+            $table->foreign('category_id')->references('id')->on('drug_categories');
         });
     }
 
