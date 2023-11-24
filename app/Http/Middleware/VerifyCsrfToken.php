@@ -17,5 +17,9 @@ class VerifyCsrfToken extends Middleware
         '/drugs',
         '/drug-categories',
         '/drug-categories/*',
+        '/purchases',
+        '/purchases/*',
+        '/purchases-user/*',
+        '/purchases-drug/*',
     ];
 }

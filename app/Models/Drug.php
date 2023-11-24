@@ -9,5 +9,5 @@ use Laravel\Sanctum\HasApiTokens;
 class Drug extends Model
 {
     use HasFactory, HasApiTokens;
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'category_id'];
 }

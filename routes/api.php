@@ -18,20 +18,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/drugs', [App\Http\Controllers\DrugController::class, 'index'])->name('drugs.index');
+Route::get('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'show'])->name('drugs.show');
+
+
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/drugs', [App\Http\Controllers\DrugController::class, 'index'])->name('drugs.index');
+    // Route::get('/drugs', [App\Http\Controllers\DrugController::class, 'index'])->name('drugs.index');
     Route::get('/drugs/create', [App\Http\Controllers\DrugController::class, 'create'])->name('drugs.create');
     Route::post('/drugs', [App\Http\Controllers\DrugController::class, 'store'])->name('drugs.store');
-    Route::get('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'show'])->name('drugs.show');
+    // Route::get('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'show'])->name('drugs.show');
     Route::get('/drugs/{drug}/edit', [App\Http\Controllers\DrugController::class, 'edit'])->name('drugs.edit');
     Route::patch('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'update'])->name('drugs.update');
     Route::delete('/drugs/{drug}', [App\Http\Controllers\DrugController::class, 'destroy'])->name('drugs.destroy');
-    Route::get('/drugs/drug-category', [App\Http\Controllers\DrugController::class, 'drugCategory'])->name('drugs.drug-category');
+    Route::get('/drugs/category', [App\Http\Controllers\DrugController::class, 'drugCategory'])->name('drugs.category');
 
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
     Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+    // Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
     Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
     Route::patch('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
@@ -49,5 +53,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/drug-categories/{drugCategory}/edit', [App\Http\Controllers\DrugCategoryController::class, 'edit'])->name('drug-categories.edit');
     Route::patch('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'update'])->name('drug-categories.update');
     Route:: delete('/drug-categories/{drugCategory}', [App\Http\Controllers\DrugCategoryController::class, 'destroy'])->name('drug-categories.destroy');
+
+    Route::get('/purchases-user/{user_id}', [App\Http\Controllers\PurchasesController::class, 'getUser'])->name('purchases.user');
+    Route::get('/purchases-drug/{drug_id}', [App\Http\Controllers\PurchasesController::class, 'getDrug'])->name('purchases.drug');
 });
+
+Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
 

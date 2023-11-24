@@ -18,31 +18,43 @@ class UserSeeder extends Seeder
                 'name' => 'John Doe', 
                 'email' => 'doe@gmail.com',
                 'password' => bcrypt('password'),
+                'role' => 'user',
+                'gender' => 'male',
             ],
             [
                 'name' => 'Jane Doe', 
                 'email' => 'jane@gmail.com',
                 'password' => bcrypt('password'),
+                'role' => 'user',
+                'gender' => 'female',
             ],
             [
                 'name' => 'John Smith', 
                 'email' => 'smith@gmail.com',
                 'password' => bcrypt('password'),
+                'role' => 'user',
+                'gender' => 'male',
             ],
             [
                 'name' => 'Jane Smith', 
                 'email' => 'janesmith@gmail.com',
                 'password' => bcrypt('password'),
+                'role' => 'user',
+                'gender' => 'female',
             ],
             [
                 'name' => 'lance', 
                 'email' => 'lance@gmail.com',
                 'password' => bcrypt('@.happy!0310'),
+                'role' => 'user',
+                'gender' => 'male',
             ],
             [
                 'name' => 'admin', 
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('@.happy!0310'),
+                'role' => 'admin',
+                'gender' => 'male',
             ],
         ]);
     }

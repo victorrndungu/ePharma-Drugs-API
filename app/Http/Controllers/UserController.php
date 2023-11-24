@@ -57,7 +57,7 @@ class UserController extends Controller
 
     // list of all users by last login time
     public function time(){
-        $users = User::orderBy('last_login_at', 'desc')->get();
+        $users = User::orderBy('created_at', 'asc')->get();
     
         return response()->json($users);
     }

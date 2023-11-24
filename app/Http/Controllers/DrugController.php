@@ -48,7 +48,7 @@ class DrugController extends Controller
     
     // List of all drugs by category from the db
     public function drugCategory(){
-        $drugs = Drug::orderBy('drug_category', 'asc')->get();
+        $drugs = Drug::orderBy('category_id', 'asc')->get();
         return response()->json($drugs);
     }
 }

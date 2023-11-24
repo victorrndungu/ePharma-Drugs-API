@@ -56,13 +56,20 @@ class PurchasesController extends Controller
         //
     }
     public function create()
-{
-    $users = User::all();
-    $drugs = Drug::all();
+    {
+        $users = User::all();
+        $drugs = Drug::all();
 
-    return response()->json([
-        'users' => $users,
-        'drugs' => $drugs,
-    ]);
-}
+        return response()->json([
+            'users' => $users,
+            'drugs' => $drugs,
+        ]);
+    }
+
+    //get row where user id is the one passed in the url
+    public function getUser(string $id)
+    {
+        $purchase = Purchases::where('user_id', $id)->get();
+        return response()->json($purchase);
+    }
 }
