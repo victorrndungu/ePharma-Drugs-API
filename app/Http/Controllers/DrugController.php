@@ -43,6 +43,8 @@ class DrugController extends Controller
     public function destroy(Drug $drug)
     {
         $drug->delete();
+        // delete all values from purchases table where drug_id = $drug->id
+        $drug->purchases()->delete();
         return response()->json(null, 204);
     }
     

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Purchases;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -41,8 +44,13 @@ class UserController extends Controller
     }
     public function destroy(User $user)
     {
-        $user->delete();
-        return response()->json(null, 204);
+        DB::transaction(function () use ($user) {
+            Purchases::where('user_id', $user->id)->delete();
+            $user->delete();
+        });
+
+        return response()->json([
+            'message' => 'Deleted successfully.'], 200);
     }
     //list of all users by gender
     public function gender(){

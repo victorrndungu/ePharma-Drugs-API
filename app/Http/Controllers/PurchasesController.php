@@ -45,7 +45,8 @@ class PurchasesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $purchase = Purchases::where('user_id', $id)->update($request->all());
+        return response()->json($purchase);
     }
 
     /**
@@ -53,7 +54,8 @@ class PurchasesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $purchase = Purchases::where('user_id', $id)->delete();
+        return response()->json($purchase);
     }
     public function create()
     {

@@ -43,6 +43,8 @@ class DrugCategoryController extends Controller
     public function destroy(DrugCategory $drugCategory)
     {
         $drugCategory->delete();
-        return response()->json(null, 204);
+        return response()->json([
+            'message' => 'Deleted successfully.'
+        ], 204);
     }
 }
