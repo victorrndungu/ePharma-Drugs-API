@@ -44,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function medications()
+    {
+        return $this->belongsToMany(Medication::class, 'user_medications')->withPivot('dosage', 'schedule')->withTimestamps();
+    }
 }

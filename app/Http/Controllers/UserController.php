@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Purchases;
+use App\Models\Medication;
 use Illuminate\Support\Facades\DB;
 
 
@@ -68,5 +69,38 @@ class UserController extends Controller
         $users = User::orderBy('created_at', 'asc')->get();
     
         return response()->json($users);
+    }
+
+    public function subscribeMedication(Request $request, $medicationId)
+    {
+        $user = auth()->user();
+        $medication = Medication::findOrFail($medicationId);
+
+        $user->medications()->syncWithoutDetaching([
+            $medication->id => [
+                'dosage' => $request->input('dosage'),
+                'schedule' => $request->input('schedule'),
+            ],
+        ]);
+
+        return response()->json(['message' => 'Medication subscribed successfully']);
+    }
+
+    public function unsubscribeMedication(Request $request, $medicationId)
+    {
+        $user = auth()->user();
+        $medication = Medication::findOrFail($medicationId);
+
+        $user->medications()->detach($medication->id);
+
+        return response()->json(['message' => 'Unsubscribed from medication successfully']);
+    }
+
+    public function getPrescriptions()
+    {
+        $user = auth()->user();
+        $prescriptions = $user->medications;
+
+        return response()->json($prescriptions);
     }
 }
