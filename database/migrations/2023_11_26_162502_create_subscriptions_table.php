@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medications', function (Blueprint $table) {
-            $table->id();
-            $table->
-            $table->timestamps();
+        Schema::create('subscriptions', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained();
+        $table->string('plan');
+        $table->timestamp('expires_at')->nullable();
+        $table->timestamps();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medications');
+        Schema::dropIfExists('subscriptions');
     }
 };

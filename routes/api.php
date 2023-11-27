@@ -58,6 +58,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/purchases-user/{user_id}', [App\Http\Controllers\PurchasesController::class, 'getUser'])->name('purchases.user');
     Route::get('/purchases-drug/{drug_id}', [App\Http\Controllers\PurchasesController::class, 'getDrug'])->name('purchases.drug');
+
+
+    Route::post('/subscribe', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
+    Route::post('/unsubscribe', [App\Http\Controllers\SubscriptionController::class, 'unsubscribe']);
+    Route::get('/subscription', [App\Http\Controllers\SubscriptionController::class, 'getSubscription']);
 });
 
 Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');

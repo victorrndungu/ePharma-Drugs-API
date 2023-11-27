@@ -45,8 +45,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function medications()
-    {
-        return $this->belongsToMany(Medication::class, 'user_medications')->withPivot('dosage', 'schedule')->withTimestamps();
-    }
 }
